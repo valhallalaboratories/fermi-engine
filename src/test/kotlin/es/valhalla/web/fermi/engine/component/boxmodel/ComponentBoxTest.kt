@@ -23,7 +23,7 @@ internal class ComponentBoxTest {
 	fun testEmptyComponentWithPaddingsSize() {
 		val emptyComponentBox =
 			ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
-				paddings = Paddings.getSameDimensionPaddings(PixelDimension(10)),
+				paddings = Paddings.buildSameSizePaddings(PixelSize(10)),
 			)
 
 		assert(emptyComponentBox.getComponentEffectiveWidth().pixels == 20)
