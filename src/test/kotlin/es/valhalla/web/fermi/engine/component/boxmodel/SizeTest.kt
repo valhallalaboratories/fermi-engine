@@ -1,5 +1,6 @@
 package es.valhalla.web.fermi.engine.component.boxmodel
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class SizeTest {
@@ -8,7 +9,7 @@ internal class SizeTest {
 		val firstSize: Size = MetricSize(mm = 210f)
 		val secondSize: Size = MetricSize(mm = 210f)
 		val sum = firstSize + secondSize
-		assert(sum.pixels == firstSize.pixels + secondSize.pixels)
+		assertThat(sum.pixels).isEqualTo(firstSize.pixels + secondSize.pixels)
 	}
 
 	@Test
@@ -16,6 +17,6 @@ internal class SizeTest {
 		val metricDimension = MetricSize(mm = 210f)
 		val expectedImperialDimension = ImperialSize(inches = 8.27f)
 
-		assert(metricDimension.pixels == expectedImperialDimension.pixels)
+		assertThat(metricDimension.pixels).isEqualTo(expectedImperialDimension.pixels)
 	}
 }

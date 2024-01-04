@@ -1,13 +1,10 @@
 package es.valhalla.web.fermi.engine.component.style
 
-import org.junit.jupiter.api.Assertions.assertAll
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-@Nested
 class ColorTestSuite {
 	@Nested
 	internal inner class RgbaColorTest {
