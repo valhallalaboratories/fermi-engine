@@ -20,4 +20,10 @@ data class Paddings(val top: Padding, val right: Padding, val bottom: Padding, v
 				left = Padding(size),
 			)
 	}
+
+	val horizontalPadding: Size
+		get() = left.size + right.size
+
+	val verticalPadding: Size
+		get() = top.size + bottom.size
 }

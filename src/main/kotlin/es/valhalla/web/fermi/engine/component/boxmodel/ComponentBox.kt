@@ -3,8 +3,8 @@ package es.valhalla.web.fermi.engine.component.boxmodel
 data class ComponentBox(
 	val width: Size,
 	val height: Size,
-	val margins: Margins,
-	val paddings: Paddings,
+	val margins: Margins = Margins.NO_MARGINS,
+	val paddings: Paddings = Paddings.NO_PADDINGS,
 ) {
 	companion object {
 		val INLINE_COMPONENT_BOX_MODEL =
@@ -23,7 +23,9 @@ data class ComponentBox(
 			)
 	}
 
-	fun getComponentEffectiveWidth() = PixelSize((width + paddings.left.size + paddings.right.size).pixels)
+	val effectiveWidth: Int
+		get() = (width + paddings.horizontalPadding).pixels
 
-	fun getComponentEffectiveHeight() = PixelSize((height + paddings.top.size + paddings.bottom.size).pixels)
+	val effectiveHeight: Int
+		get() = (height + paddings.verticalPadding).pixels
 }

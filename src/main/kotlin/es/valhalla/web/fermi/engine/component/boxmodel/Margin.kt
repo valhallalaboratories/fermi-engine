@@ -5,7 +5,7 @@ import es.valhalla.web.fermi.engine.component.style.Colors
 
 data class Margin(
 	val direction: Direction,
-	val value: Size = Size.ZERO,
+	val size: Size = Size.ZERO,
 	val border: Border = Border.NO_BORDER,
 )
 
@@ -43,17 +43,23 @@ data class Margins(
 	companion object {
 		val NO_MARGINS =
 			Margins(
-				top = Margin(direction = Direction.TOP, value = Size.ZERO),
-				right = Margin(direction = Direction.RIGHT, value = Size.ZERO),
-				bottom = Margin(direction = Direction.BOTTOM, value = Size.ZERO),
-				left = Margin(direction = Direction.LEFT, value = Size.ZERO),
+				top = Margin(direction = Direction.TOP, size = Size.ZERO),
+				right = Margin(direction = Direction.RIGHT, size = Size.ZERO),
+				bottom = Margin(direction = Direction.BOTTOM, size = Size.ZERO),
+				left = Margin(direction = Direction.LEFT, size = Size.ZERO),
 			)
 		val A4 =
 			Margins(
-				top = Margin(direction = Direction.TOP, value = PixelSize(36)),
-				right = Margin(direction = Direction.RIGHT, value = PixelSize(36)),
-				bottom = Margin(direction = Direction.BOTTOM, value = PixelSize(36)),
-				left = Margin(direction = Direction.LEFT, value = PixelSize(36)),
+				top = Margin(direction = Direction.TOP, size = PixelSize(36)),
+				right = Margin(direction = Direction.RIGHT, size = PixelSize(36)),
+				bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36)),
+				left = Margin(direction = Direction.LEFT, size = PixelSize(36)),
 			)
 	}
+
+	val horizontalMargin: Size
+		get() = left.size + right.size
+
+	val verticalMargin: Size
+		get() = top.size + bottom.size
 }
