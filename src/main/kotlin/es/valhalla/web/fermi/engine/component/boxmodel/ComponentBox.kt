@@ -1,6 +1,7 @@
 package es.valhalla.web.fermi.engine.component.boxmodel
 
 data class ComponentBox(
+	val parentBox: ComponentBox? = null,
 	val width: Size,
 	val height: Size,
 	val margins: Margins = Margins.NO_MARGINS,

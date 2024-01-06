@@ -5,7 +5,7 @@ import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
 import es.valhalla.web.fermi.engine.component.boxmodel.Paddings
 import es.valhalla.web.fermi.engine.component.boxmodel.PixelSize
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
-import es.valhalla.web.fermi.engine.component.layout.RowLayoutComponentWrapper
+import es.valhalla.web.fermi.engine.component.layout.StackedComponentWrapper
 import es.valhalla.web.fermi.engine.component.style.Colors
 import es.valhalla.web.fermi.engine.component.style.Style
 import org.assertj.core.api.Assertions.assertThat
@@ -20,36 +20,24 @@ internal class FermiDocumentTest {
 			DocumentSection(
 				sectionRootContainer =
 					Container(
-						layout = LayoutType.ColumnLayout,
+						layout = LayoutType.RowLayout,
 						children =
-							listOf(
-								RowLayoutComponentWrapper(
-									0,
-									Container(
-										componentId = UUID.randomUUID().toString(),
-										style =
-											Style.BASE_STYLE.copy(
-												boxModel = ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(paddings = tenPixelPaddings),
-												backgroundColor = Colors.RED,
-											),
+							StackedComponentWrapper(
+								elements =
+									listOf(
+										Container(
+											componentId = UUID.randomUUID().toString(),
+											boxModel =
+												ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
+													paddings = tenPixelPaddings,
+													parentBox = ComponentBox.PAGE_BASE_A4,
+												),
+											style =
+												Style.BASE_STYLE.copy(
+													backgroundColor = Colors.RED,
+												),
+										),
 									),
-								),
-								RowLayoutComponentWrapper(
-									1,
-									Container(
-										componentId = UUID.randomUUID().toString(),
-										style =
-											Style.BASE_STYLE.copy(
-												boxModel =
-													ComponentBox(
-														width = PixelSize(10),
-														height = PixelSize(10),
-														paddings = tenPixelPaddings,
-													),
-												backgroundColor = Colors.BLUE,
-											),
-									),
-								),
 							),
 					),
 			)

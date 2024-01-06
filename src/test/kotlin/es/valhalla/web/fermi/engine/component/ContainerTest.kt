@@ -11,7 +11,7 @@ internal class ContainerTest {
 		assertThat(container.layout)
 			.describedAs("an empty container must have no layout by default")
 			.isEqualTo(LayoutType.NoLayout)
-		assertThat(container.style.boxModel.effectiveHeight).isEqualTo(0)
-		assertThat(container.style.boxModel.effectiveWidth).isEqualTo(0)
+		assertThat(container.boxModel.effectiveHeight).isEqualTo(0)
+		assertThat(container.boxModel.effectiveWidth).isEqualTo(0)
 	}
 }
