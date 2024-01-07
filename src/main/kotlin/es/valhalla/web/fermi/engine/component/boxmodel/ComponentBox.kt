@@ -25,8 +25,8 @@ data class ComponentBox(
 	}
 
 	val effectiveWidth: Int
-		get() = (width + paddings.horizontalPadding).pixels
+		get() = (width + paddings.horizontalPadding).points
 
 	val effectiveHeight: Int
-		get() = (height + paddings.verticalPadding).pixels
+		get() = (height + paddings.verticalPadding).points
 }

@@ -9,7 +9,7 @@ internal class SizeTest {
 		val firstSize: Size = MetricSize(mm = 210f)
 		val secondSize: Size = MetricSize(mm = 210f)
 		val sum = firstSize + secondSize
-		assertThat(sum.pixels).isEqualTo(firstSize.pixels + secondSize.pixels)
+		assertThat(sum.points).isEqualTo(firstSize.points + secondSize.points)
 	}
 
 	@Test
@@ -17,6 +17,14 @@ internal class SizeTest {
 		val metricDimension = MetricSize(mm = 210f)
 		val expectedImperialDimension = ImperialSize(inches = 8.27f)
 
-		assertThat(metricDimension.pixels).isEqualTo(expectedImperialDimension.pixels)
+		assertThat(metricDimension.points).isEqualTo(expectedImperialDimension.points)
+	}
+
+	@Test
+	fun `sum pixel dimensions using non standard dpi's`() {
+		val metricDimension = MetricSize(mm = 210f, dpi = 144)
+		val expectedImperialDimension = ImperialSize(inches = 8.27f, dpi = 144)
+
+		assertThat(metricDimension.points).isEqualTo(expectedImperialDimension.points)
 	}
 }
