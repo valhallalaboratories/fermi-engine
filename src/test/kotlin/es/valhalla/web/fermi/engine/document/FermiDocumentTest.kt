@@ -5,42 +5,36 @@ import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
 import es.valhalla.web.fermi.engine.component.boxmodel.Paddings
 import es.valhalla.web.fermi.engine.component.boxmodel.PixelSize
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
-import es.valhalla.web.fermi.engine.component.layout.StackedComponentWrapper
+import es.valhalla.web.fermi.engine.component.layout.StackedContainerWrappedComponent
 import es.valhalla.web.fermi.engine.component.style.Colors
-import es.valhalla.web.fermi.engine.component.style.Style
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import java.util.UUID
 
 internal class FermiDocumentTest {
 	@Test
 	fun `create simple document with just one section`() {
 		val tenPixelPaddings = Paddings.buildSameSizePaddings(PixelSize(10))
+
 		val documentSection =
 			DocumentSection(
-				sectionRootContainer =
+				sectionRootContainer = Container(layout = LayoutType.RowLayout),
+				sectionBox = ComponentBox.PAGE_BASE_A4,
+			)
+
+		documentSection.sectionRootContainer.elements.add(
+			StackedContainerWrappedComponent(
+				component =
 					Container(
-						layout = LayoutType.RowLayout,
-						children =
-							StackedComponentWrapper(
-								elements =
-									listOf(
-										Container(
-											componentId = UUID.randomUUID().toString(),
-											boxModel =
-												ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
-													paddings = tenPixelPaddings,
-													parentBox = ComponentBox.PAGE_BASE_A4,
-												),
-											style =
-												Style.BASE_STYLE.copy(
-													backgroundColor = Colors.RED,
-												),
-										),
-									),
+						style = documentSection.sectionBaseStyle.copy(backgroundColor = Colors.GREEN),
+						boxModel =
+							ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
+								paddings = tenPixelPaddings,
+								parentBox = documentSection.sectionBox,
 							),
 					),
-			)
+			),
+		)
+
 		val document =
 			FermiDocument(
 				documentRootSection = documentSection,
