@@ -1,9 +1,9 @@
 package es.valhalla.web.fermi.engine.component.style
 
-import org.junit.jupiter.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatExceptionOfType
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class ColorTestSuite {
 	@Nested
@@ -13,7 +13,9 @@ class ColorTestSuite {
 			val color = RgbaColor(100, 100, 100, 0.5f)
 			val fadedColor = color.fade(20)
 
-			assertEquals(0.6f, fadedColor.alpha, "Alpha value should be increased by 20%")
+			assertThat(fadedColor.alpha)
+				.describedAs("Alpha value should be increased by 20%")
+				.isEqualTo(0.6f)
 		}
 
 		@Test
@@ -21,7 +23,9 @@ class ColorTestSuite {
 			val color = RgbaColor(100, 100, 100, 0f)
 			val fadedColor = color.fade(20)
 
-			assertEquals(0.0f, fadedColor.alpha, "Alpha value should be increased by 20%")
+			assertThat(fadedColor.alpha)
+				.describedAs("Alpha value should be increased by 20%")
+				.isEqualTo(0.0f)
 		}
 
 		@Test
@@ -29,10 +33,12 @@ class ColorTestSuite {
 			val color = RgbaColor(150, 150, 150, 1f)
 			val darkenedColor = color.darken(20)
 
-			assertEquals(120, darkenedColor.red)
-			assertEquals(120, darkenedColor.green)
-			assertEquals(120, darkenedColor.blue)
-			assertEquals(1f, darkenedColor.alpha)
+			assertThat(darkenedColor).describedAs("Check each color component after darkening").satisfies {
+				assertThat(it.red).isEqualTo(120)
+				assertThat(it.green).isEqualTo(120)
+				assertThat(it.blue).isEqualTo(120)
+				assertThat(it.alpha).isEqualTo(1f)
+			}
 		}
 
 		@Test
@@ -40,7 +46,9 @@ class ColorTestSuite {
 			val color = RgbaColor(255, 0, 0, 1f)
 			val hexColorCode = color.toHexColorCode()
 
-			assertEquals("#FF0000FF", hexColorCode.toString(), "Hex string should match the RGBA color")
+			assertThat(hexColorCode.toString())
+				.describedAs("Hex string should match the RGBA color")
+				.isEqualTo("#FF0000FF")
 		}
 	}
 
@@ -51,7 +59,9 @@ class ColorTestSuite {
 			val hexColor = HexColor(HexColorCode.fromString("#FF000080"))
 			val fadedHexColor = hexColor.fade(25)
 
-			assertEquals("#FF0000A0", fadedHexColor.hexRepresentation.toString())
+			assertThat(fadedHexColor.hexRepresentation.toString())
+				.describedAs("Hex color should fade correctly")
+				.isEqualTo("#FF0000A0")
 		}
 
 		@Test
@@ -59,7 +69,9 @@ class ColorTestSuite {
 			val hexColor = HexColor(HexColorCode.fromString("#969696FF"))
 			val darkenedHexColor: HexColor = hexColor.darken(20) as HexColor
 
-			assertEquals("#787878FF", darkenedHexColor.hexRepresentation.toString())
+			assertThat(darkenedHexColor.hexRepresentation.toString())
+				.describedAs("Hex color should darken correctly")
+				.isEqualTo("#787878FF")
 		}
 
 		@Test
@@ -69,11 +81,15 @@ class ColorTestSuite {
 
 			val fadedRgba = rgbaColor.fade(10)
 			val fadedHex = hexColor.fade(10)
-			assertEquals(fadedRgba.toHexColorCode().toString(), fadedHex.hexRepresentation.toString())
+			assertThat(fadedRgba.toHexColorCode().toString())
+				.describedAs("Faded RGBA color should match faded Hex color")
+				.isEqualTo(fadedHex.hexRepresentation.toString())
 
 			val darkenedRgba = rgbaColor.darken(10)
 			val darkenedHex = hexColor.darken(10) as HexColor
-			assertEquals(darkenedRgba.toHexColorCode().toString(), darkenedHex.hexRepresentation.toString())
+			assertThat(darkenedRgba.toHexColorCode().toString())
+				.describedAs("Darkened RGBA color should match darkened Hex color")
+				.isEqualTo(darkenedHex.hexRepresentation.toString())
 		}
 	}
 
@@ -84,7 +100,9 @@ class ColorTestSuite {
 			val hexString = "#FF5733"
 			val hexColorCode = HexColorCode.fromString(hexString)
 
-			assertEquals(hexString, hexColorCode.toString())
+			assertThat(hexColorCode.toString())
+				.describedAs("HexColorCode should match the hex string without alpha channel")
+				.isEqualTo(hexString)
 		}
 
 		@Test
@@ -92,19 +110,19 @@ class ColorTestSuite {
 			val hexString = "#FF5733AA"
 			val hexColorCode = HexColorCode.fromString(hexString)
 
-			assertEquals(hexString, hexColorCode.toString())
+			assertThat(hexColorCode.toString())
+				.describedAs("HexColorCode should match the hex string with alpha channel")
+				.isEqualTo(hexString)
 		}
 
 		@Test
 		fun `Invalid hex string should throw IllegalArgumentException`() {
 			val invalidHexString = "#GGG999"
 
-			val exception =
-				assertThrows<IllegalArgumentException> {
-					HexColorCode.fromString(invalidHexString)
-				}
-
-			assertTrue(exception.message?.contains("Invalid hex color code") ?: false)
+			assertThatExceptionOfType(IllegalArgumentException::class.java)
+				.isThrownBy { HexColorCode.fromString(invalidHexString) }
+				.withMessageContaining("Invalid hex color code")
+				.describedAs("Creating HexColorCode with an invalid hex string should throw IllegalArgumentException")
 		}
 	}
 
@@ -115,13 +133,12 @@ class ColorTestSuite {
 			val hex = HexColorCode.fromString("#FF0000")
 			val rgba = ColorUtils.hexToRgba(hex)
 
-			assertAll(
-				"Check each RGBA component",
-				{ assertEquals(255, rgba.red) },
-				{ assertEquals(0, rgba.green) },
-				{ assertEquals(0, rgba.blue) },
-				{ assertEquals(1f, rgba.alpha) },
-			)
+			assertThat(rgba).describedAs("Check each RGBA component from HexColorCode").satisfies {
+				assertThat(it.red).isEqualTo(255)
+				assertThat(it.green).isEqualTo(0)
+				assertThat(it.blue).isEqualTo(0)
+				assertThat(it.alpha).isEqualTo(1f)
+			}
 		}
 
 		@Test
@@ -129,7 +146,9 @@ class ColorTestSuite {
 			val rgba = RgbaComponents(255, 0, 0, 1f)
 			val hex = ColorUtils.rgbaToHex(rgba)
 
-			assertEquals("#FF0000FF", hex.toString())
+			assertThat(hex.toString())
+				.describedAs("Hex string should match the RGBA components")
+				.isEqualTo("#FF0000FF")
 		}
 	}
 }
