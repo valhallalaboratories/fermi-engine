@@ -7,5 +7,5 @@ import es.valhalla.web.fermi.engine.component.style.Style
 class DocumentSection(
 	val sectionBaseStyle: Style = Style.BASE_STYLE,
 	val sectionBox: ComponentBox = ComponentBox.INLINE_COMPONENT_BOX_MODEL,
-	val sectionRootContainer: Container = Container(boxModel = sectionBox, style = sectionBaseStyle),
+	val sectionRootContainer: Container = Container(boxModel = sectionBox, style = sectionBaseStyle)
 )

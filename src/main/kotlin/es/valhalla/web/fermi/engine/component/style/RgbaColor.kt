@@ -6,6 +6,7 @@ data class RgbaColor(
 	val blue: Int,
 	val alpha: Float = 1f,
 ) : Color {
+
 	override fun fade(percent: Int): RgbaColor {
 		val newAlpha = (alpha + alpha * (percent / 100.0f)).coerceIn(0f, 1f)
 		return copy(alpha = newAlpha)

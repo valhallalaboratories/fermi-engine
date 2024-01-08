@@ -10,10 +10,7 @@ data class Margin(
 )
 
 enum class Direction {
-	TOP,
-	RIGHT,
-	BOTTOM,
-	LEFT,
+	TOP, RIGHT, BOTTOM, LEFT,
 }
 
 data class Border(
@@ -22,39 +19,37 @@ data class Border(
 	val borderColor: Color = Colors.BLACK,
 ) {
 	companion object {
-		val NO_BORDER: Border =
-			Border(width = Size.ZERO, borderType = BorderType.NO_BORDER, borderColor = Colors.BLACK)
+		val NO_BORDER: Border = Border(
+			width = Size.ZERO,
+			borderType = BorderType.NO_BORDER,
+			borderColor = Colors.BLACK
+		)
 	}
 }
 
 enum class BorderType {
-	NO_BORDER,
-	SOLID,
-	DOTTED,
-	DASHED,
+	NO_BORDER, SOLID, DOTTED, DASHED
 }
 
 data class Margins(
 	val left: Margin,
 	val top: Margin,
 	val bottom: Margin,
-	val right: Margin,
+	val right: Margin
 ) {
 	companion object {
-		val NO_MARGINS =
-			Margins(
-				top = Margin(direction = Direction.TOP, size = Size.ZERO),
-				right = Margin(direction = Direction.RIGHT, size = Size.ZERO),
-				bottom = Margin(direction = Direction.BOTTOM, size = Size.ZERO),
-				left = Margin(direction = Direction.LEFT, size = Size.ZERO),
-			)
-		val A4 =
-			Margins(
-				top = Margin(direction = Direction.TOP, size = PixelSize(36)),
-				right = Margin(direction = Direction.RIGHT, size = PixelSize(36)),
-				bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36)),
-				left = Margin(direction = Direction.LEFT, size = PixelSize(36)),
-			)
+		val NO_MARGINS = Margins(
+			top = Margin(direction = Direction.TOP, size = Size.ZERO),
+			right = Margin(direction = Direction.RIGHT, size = Size.ZERO),
+			bottom = Margin(direction = Direction.BOTTOM, size = Size.ZERO),
+			left = Margin(direction = Direction.LEFT, size = Size.ZERO)
+		)
+		val A4 = Margins(
+			top = Margin(direction = Direction.TOP, size = PixelSize(36)),
+			right = Margin(direction = Direction.RIGHT, size = PixelSize(36)),
+			bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36)),
+			left = Margin(direction = Direction.LEFT, size = PixelSize(36))
+		)
 	}
 
 	val horizontalMargin: Size

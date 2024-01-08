@@ -12,5 +12,5 @@ open class Container(
 	override val boxModel: ComponentBox = ComponentBox.INLINE_COMPONENT_BOX_MODEL,
 	override val style: Style = Style.BASE_STYLE,
 	override val layout: LayoutType = LayoutType.NoLayout,
-	override val elements: MutableList<WrappedComponent> = mutableListOf(),
+	override val elements: MutableList<WrappedComponent> = mutableListOf()
 ) : Component

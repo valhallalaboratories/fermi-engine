@@ -41,7 +41,7 @@ data class MetricSize(
 		get() = ((mm / Size.MILLIMETERS_PER_INCH) * dpi).roundToInt()
 }
 
-fun Float.round(decimals: Int): Float {
+private fun Float.round(decimals: Int): Float {
 	var multiplier = 1f
 	repeat(decimals) { multiplier *= 10 }
 	return (round(this * multiplier) / multiplier)

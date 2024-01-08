@@ -1,8 +1,15 @@
 package es.valhalla.web.fermi.engine.component.boxmodel
 
-data class Padding(val size: Size = Size.ZERO)
+data class Padding(
+	val size: Size = Size.ZERO
+)
 
-data class Paddings(val top: Padding, val right: Padding, val bottom: Padding, val left: Padding) {
+data class Paddings(
+	val top: Padding,
+	val right: Padding,
+	val bottom: Padding,
+	val left: Padding
+) {
 	companion object {
 		val NO_PADDINGS =
 			Paddings(

@@ -1,6 +1,7 @@
 package es.valhalla.web.fermi.engine.component.style
 
 data class HexColor(val hexRepresentation: HexColorCode) : Color {
+
 	override fun fade(percent: Int): HexColor {
 		val rgba = ColorUtils.hexToRgba(hexRepresentation)
 		val fadedRgba = RgbaColor(rgba.red, rgba.green, rgba.blue, rgba.alpha).fade(percent)
@@ -20,15 +21,16 @@ data class HexColor(val hexRepresentation: HexColorCode) : Color {
 }
 
 class HexColorCode(private val value: String) {
+
 	init {
 		require(value.matches(Regex("#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8}"))) {
 			"Invalid hex color code: $value"
 		}
 	}
 
-	override fun toString(): String = value
-
 	companion object {
 		fun fromString(hexString: String) = HexColorCode(hexString)
 	}
+
+	override fun toString(): String = value
 }

@@ -11,35 +11,30 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class FermiDocumentTest {
-	@Test
-	fun `create simple document with just one section`() {
+	@Test fun `create simple document with just one section`() {
 		val tenPixelPaddings = Paddings.buildSameSizePaddings(PixelSize(10))
 
-		val documentSection =
-			DocumentSection(
-				sectionRootContainer = Container(layout = LayoutType.RowLayout),
-				sectionBox = ComponentBox.PAGE_BASE_A4,
-			)
+		val documentSection = DocumentSection(
+			sectionRootContainer = Container(layout = LayoutType.RowLayout),
+			sectionBox = ComponentBox.PAGE_BASE_A4,
+		)
 
 		documentSection.sectionRootContainer.elements.add(
 			StackedContainerWrappedComponent(
-				component =
-					Container(
-						style = documentSection.sectionBaseStyle.copy(backgroundColor = Colors.GREEN),
-						boxModel =
-							ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
-								paddings = tenPixelPaddings,
-								parentBox = documentSection.sectionBox,
-							),
+				component = Container(
+					style = documentSection.sectionBaseStyle.copy(backgroundColor = Colors.GREEN),
+					boxModel = ComponentBox.INLINE_COMPONENT_BOX_MODEL.copy(
+						paddings = tenPixelPaddings,
+						parentBox = documentSection.sectionBox,
 					),
+				),
 			),
 		)
 
-		val document =
-			FermiDocument(
-				documentRootSection = documentSection,
-				documentProperties = DocumentProperties(author = "Test"),
-			)
+		val document = FermiDocument(
+			documentRootSection = documentSection,
+			documentProperties = DocumentProperties(),
+		)
 
 		assertThat(document.documentId).isNotNull()
 		assertThat(document.documentRootSection.sectionRootContainer.componentId).isNotNull()

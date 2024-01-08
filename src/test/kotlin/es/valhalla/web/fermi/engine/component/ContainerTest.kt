@@ -5,9 +5,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class ContainerTest {
-	@Test
-	fun `create empty container`() {
+	@Test fun `create empty container`() {
 		val container = Container()
+
 		assertThat(container.layout)
 			.describedAs("an empty container must have no layout by default")
 			.isEqualTo(LayoutType.NoLayout)

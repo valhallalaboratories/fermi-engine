@@ -13,14 +13,14 @@ data class ComponentBox(
 				width = Size.ZERO,
 				height = Size.ZERO,
 				paddings = Paddings.NO_PADDINGS,
-				margins = Margins.NO_MARGINS,
+				margins = Margins.NO_MARGINS
 			)
 		val PAGE_BASE_A4 =
 			ComponentBox(
 				width = MetricSize(mm = 210f),
 				height = MetricSize(mm = 297f),
 				margins = Margins.A4,
-				paddings = Paddings.NO_PADDINGS,
+				paddings = Paddings.NO_PADDINGS
 			)
 	}
 

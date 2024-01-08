@@ -1,12 +1,14 @@
 package es.valhalla.web.fermi.engine.component.style
 
 sealed interface Color {
+
 	fun fade(percent: Int): Color
 
 	fun darken(percent: Int): Color
 }
 
 object ColorUtils {
+
 	fun hexToRgba(hexColorCode: HexColorCode): RgbaComponents<Int, Int, Int, Float> {
 		val hex = hexColorCode.toString()
 		val r = hex.substring(1, 3).toInt(16)

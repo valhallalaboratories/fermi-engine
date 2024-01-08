@@ -10,14 +10,13 @@ interface WrappedComponent {
 class StackedContainerWrappedComponent(
 	val expandWidth: Boolean = false,
 	val expandHeight: Boolean = false,
-	override val component: Component,
+	override val component: Component
 ) : WrappedComponent {
+
 	companion object {
 		val FULL_EXPANSION = { com: Component ->
 			StackedContainerWrappedComponent(
-				component = com,
-				expandWidth = true,
-				expandHeight = true,
+				component = com, expandWidth = true, expandHeight = true
 			)
 		}
 	}
@@ -28,5 +27,5 @@ class RelativeContainerWrappedComponent(
 	val right: Size? = null,
 	val bottom: Size? = null,
 	val left: Size? = null,
-	override val component: Component,
+	override val component: Component
 ) : WrappedComponent
