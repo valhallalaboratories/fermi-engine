@@ -7,6 +7,12 @@ interface WrappedComponent {
 	val component: Component
 }
 
+class ExpandedComponent(
+	override val component: Component,
+	val expandWidth: Boolean = true,
+	val expandHeight: Boolean = true
+) : WrappedComponent
+
 class StackedContainerWrappedComponent(
 	val expandWidth: Boolean = false,
 	val expandHeight: Boolean = false,
