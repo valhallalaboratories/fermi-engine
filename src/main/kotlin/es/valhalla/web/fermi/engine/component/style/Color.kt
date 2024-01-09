@@ -2,9 +2,12 @@ package es.valhalla.web.fermi.engine.component.style
 
 sealed interface Color {
 
+	val javaColor: java.awt.Color
+
 	fun fade(percent: Int): Color
 
 	fun darken(percent: Int): Color
+
 }
 
 object ColorUtils {
@@ -24,6 +27,7 @@ object ColorUtils {
 		val hexString = "#%02X%02X%02X%02X".format(red, green, blue, alphaHex)
 		return HexColorCode.fromString(hexString)
 	}
+
 }
 
 @SuppressWarnings("unused")

@@ -7,6 +7,11 @@ data class RgbaColor(
 	val alpha: Float = 1f,
 ) : Color {
 
+	override val javaColor: java.awt.Color
+		get() {
+			return java.awt.Color(red, green, blue, (alpha * 255).toInt().coerceIn(0, 255))
+		}
+
 	override fun fade(percent: Int): RgbaColor {
 		val newAlpha = (alpha + alpha * (percent / 100.0f)).coerceIn(0f, 1f)
 		return copy(alpha = newAlpha)
@@ -19,6 +24,7 @@ data class RgbaColor(
 		val newBlue = (blue * factor).coerceIn(0.0, 255.0).toInt()
 		return copy(red = newRed, green = newGreen, blue = newBlue)
 	}
+
 
 	fun toHexColorCode(): HexColorCode {
 		val rgba = RgbaComponents(red, green, blue, alpha)

@@ -2,6 +2,12 @@ package es.valhalla.web.fermi.engine.component.style
 
 data class HexColor(val hexRepresentation: HexColorCode) : Color {
 
+	override val javaColor: java.awt.Color
+		get() {
+			val rgba = ColorUtils.hexToRgba(hexRepresentation)
+			return java.awt.Color(rgba.red, rgba.green, rgba.blue, (rgba.alpha * 255).toInt().coerceIn(0, 255))
+		}
+
 	override fun fade(percent: Int): HexColor {
 		val rgba = ColorUtils.hexToRgba(hexRepresentation)
 		val fadedRgba = RgbaColor(rgba.red, rgba.green, rgba.blue, rgba.alpha).fade(percent)
@@ -18,6 +24,8 @@ data class HexColor(val hexRepresentation: HexColorCode) : Color {
 		val newRgba = RgbaComponents(newRed, newGreen, newBlue, newAlpha)
 		return HexColor(ColorUtils.rgbaToHex(newRgba))
 	}
+
+
 }
 
 class HexColorCode(private val value: String) {
