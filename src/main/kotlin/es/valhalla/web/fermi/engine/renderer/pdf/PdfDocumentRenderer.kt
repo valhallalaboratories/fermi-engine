@@ -12,7 +12,7 @@ import java.io.File
 
 class PdfDocumentRenderer(private val document: FermiDocument) : DocumentRenderer {
 
-	private val pdfDocument = PDDocument()
+	val pdfDocument = PDDocument()
 
 	override val documentSectionRenderer: DocumentSectionRenderer
 		get() = PdfDocumentSectionRenderer()
@@ -20,8 +20,6 @@ class PdfDocumentRenderer(private val document: FermiDocument) : DocumentRendere
 	override val renderContext: RenderContext
 		get() = PdfDocumentRenderContext(
 			destinationFile = File(""),
-			pdfDocument = pdfDocument,
-			parentBox = document.boxModel,
 			currentComponentBeingRendered = document
 		)
 
@@ -34,6 +32,7 @@ class PdfDocumentRenderer(private val document: FermiDocument) : DocumentRendere
 		for (item in document.documentSections) {
 			currentRenderContext = documentSectionRenderer.render(item)
 		}
+
 		return currentRenderContext
 	}
 

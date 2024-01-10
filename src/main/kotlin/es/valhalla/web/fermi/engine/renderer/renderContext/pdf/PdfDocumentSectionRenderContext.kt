@@ -1,14 +1,17 @@
-package es.valhalla.web.fermi.engine.renderer.renderContext.pdf
-
 import es.valhalla.web.fermi.engine.component.document.DocumentSection
 import es.valhalla.web.fermi.engine.component.document.FermiDocument
-import es.valhalla.web.fermi.engine.renderer.renderContext.BaseRenderContext
+import es.valhalla.web.fermi.engine.renderer.renderContext.DocumentRenderContext
+import es.valhalla.web.fermi.engine.renderer.renderContext.DocumentSectionRenderContext
 
 class PdfDocumentSectionRenderContext(
 	override val currentComponentBeingRendered: DocumentSection,
+	override val parentContext: DocumentRenderContext,
+	override val pageNumber: Int,
+	override val sectionPageNumber: Int,
 	private val document: FermiDocument
-) : BaseRenderContext(
-	parentBox = document.boxModel,
+) : DocumentSectionRenderContext(
 	currentComponentBeingRendered = currentComponentBeingRendered,
-	parentComponentBeingRendered = document
+	pageNumber = pageNumber,
+	sectionPageNumber = sectionPageNumber,
+	parentContext = parentContext
 )

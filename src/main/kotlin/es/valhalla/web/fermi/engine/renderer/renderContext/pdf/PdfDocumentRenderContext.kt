@@ -1,19 +1,17 @@
 package es.valhalla.web.fermi.engine.renderer.renderContext.pdf
 
-import es.valhalla.web.fermi.engine.component.Component
-import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
-import es.valhalla.web.fermi.engine.renderer.renderContext.BaseRenderContext
-import org.apache.pdfbox.pdmodel.PDDocument
+import es.valhalla.web.fermi.engine.component.document.FermiDocument
+import es.valhalla.web.fermi.engine.renderer.renderContext.DocumentRenderContext
+import es.valhalla.web.fermi.engine.renderer.renderContext.RenderContext
 import java.io.File
 
-data class PdfDocumentRenderContext(
-	val pdfDocument: PDDocument,
+class PdfDocumentRenderContext(
 	val destinationFile: File,
-	override val parentBox: ComponentBox,
-	override val currentComponentBeingRendered: Component
-) : BaseRenderContext(
-	parentBox = parentBox,
+	override val currentComponentBeingRendered: FermiDocument,
+	override val parentContext: RenderContext? = null,
+	override val renderingMilliseconds: Long = 0
+) : DocumentRenderContext(
 	currentComponentBeingRendered = currentComponentBeingRendered,
-	parentComponentBeingRendered = null
+	parentContext = parentContext
 )
 
