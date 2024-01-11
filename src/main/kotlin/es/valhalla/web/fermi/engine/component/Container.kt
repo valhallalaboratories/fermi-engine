@@ -3,7 +3,7 @@ package es.valhalla.web.fermi.engine.component
 import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
 import es.valhalla.web.fermi.engine.component.layout.WrappedComponent
-import es.valhalla.web.fermi.engine.component.style.Style
+import es.valhalla.web.fermi.engine.style.Style
 import java.util.UUID
 
 open class Container(

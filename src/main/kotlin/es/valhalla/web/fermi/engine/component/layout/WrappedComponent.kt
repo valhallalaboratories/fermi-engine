@@ -13,21 +13,6 @@ class ExpandedComponent(
 	val expandHeight: Boolean = true
 ) : WrappedComponent
 
-class StackedContainerWrappedComponent(
-	val expandWidth: Boolean = false,
-	val expandHeight: Boolean = false,
-	override val component: Component
-) : WrappedComponent {
-
-	companion object {
-		val FULL_EXPANSION = { com: Component ->
-			StackedContainerWrappedComponent(
-				component = com, expandWidth = true, expandHeight = true
-			)
-		}
-	}
-}
-
 class RelativeContainerWrappedComponent(
 	val top: Size? = null,
 	val right: Size? = null,

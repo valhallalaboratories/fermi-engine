@@ -1,7 +1,7 @@
 package es.valhalla.web.fermi.engine.component.document
 
 import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
-import es.valhalla.web.fermi.engine.component.style.Style
+import es.valhalla.web.fermi.engine.style.Style
 import java.util.UUID
 
 class DocumentProperties(
