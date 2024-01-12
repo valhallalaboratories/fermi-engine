@@ -1,5 +1,7 @@
 package es.valhalla.web.fermi.engine.component.boxmodel
 
+import org.apache.pdfbox.pdmodel.common.PDRectangle
+
 data class ComponentBox(
 	val parentBox: ComponentBox? = null,
 	val width: Size,
@@ -22,7 +24,18 @@ data class ComponentBox(
 				margins = Margins.A4,
 				paddings = Paddings.NO_PADDINGS
 			)
+
+		val PAGE_BASE_A4_WITH_BORDERS =
+			ComponentBox(
+				width = MetricSize(mm = 210f),
+				height = MetricSize(mm = 297f),
+				margins = Margins.A4_BORDERED,
+				paddings = Paddings.NO_PADDINGS
+			)
 	}
+
+	val pdRectangle: PDRectangle
+		get() = PDRectangle(effectiveWidth.toFloat(), effectiveHeight.toFloat())
 
 	val effectiveWidth: Int
 		get() = (width + paddings.horizontalPadding).points

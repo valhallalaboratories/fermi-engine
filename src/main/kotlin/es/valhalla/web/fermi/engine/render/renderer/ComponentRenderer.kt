@@ -2,7 +2,7 @@ package es.valhalla.web.fermi.engine.render.renderer
 
 import es.valhalla.web.fermi.engine.render.context.RenderContext
 
-interface ComponentRenderer<Component, in Context : RenderContext> {
+interface ComponentRenderer<Component, in ParentRenderContext : RenderContext> {
 
 	/**
 	 * Render a given component into render context.
@@ -17,6 +17,6 @@ interface ComponentRenderer<Component, in Context : RenderContext> {
 	fun render(component: Component): RenderContext = TODO()
 	fun render(
 		component: Component,
-		parentContext: Context
+		parentContext: ParentRenderContext
 	): RenderContext = TODO()
 }

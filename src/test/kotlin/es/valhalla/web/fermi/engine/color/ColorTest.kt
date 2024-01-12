@@ -10,12 +10,12 @@ class ColorTestSuite {
 	internal inner class RgbaColorTest {
 		@Test
 		fun `RGBA color should fade correctly`() {
-			val color = RgbaColor(100, 100, 100, 0.5f)
+			val color = RgbaColor(100, 100, 100, 1f)
 			val fadedColor = color.fade(20)
 
 			assertThat(fadedColor.alpha)
 				.describedAs("Alpha value should be increased by 20%")
-				.isEqualTo(0.6f)
+				.isEqualTo(0.8f)
 		}
 
 		@Test

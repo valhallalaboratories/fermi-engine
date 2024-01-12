@@ -25,7 +25,7 @@ class HardcodedDocumentRendererTest {
 
 		val realFermiDocument = FermiDocument(
 			documentProperties = DocumentProperties(
-				documentBox = ComponentBox.PAGE_BASE_A4
+				documentBox = ComponentBox.PAGE_BASE_A4_WITH_BORDERS
 			)
 		)
 
@@ -39,7 +39,8 @@ class HardcodedDocumentRendererTest {
 					Page(
 						Container(
 							parentComponentId = realFermiDocument.componentId,
-							style = realFermiDocument.style.copy(backgroundColor = Color.BLUE)
+							boxModel = realFermiDocument.boxModel,
+							style = realFermiDocument.style.copy(backgroundColor = Color.WHITE, foregroundColor = Color.GREEN)
 						)
 					)
 				)

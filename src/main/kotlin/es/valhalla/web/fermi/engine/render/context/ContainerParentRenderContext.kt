@@ -7,3 +7,10 @@ interface ContainerParentRenderContext : RenderContext {
 	override val renderingMilliseconds: Long
 }
 
+open class PageContainerRenderContext(
+	override val posX: Int = 0,
+	override val posY: Int = 0,
+	override val parentContext: DocumentSectionRenderContext,
+	override val renderingMilliseconds: Long
+) : ContainerParentRenderContext
+

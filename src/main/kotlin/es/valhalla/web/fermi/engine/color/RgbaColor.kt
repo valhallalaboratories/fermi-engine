@@ -9,11 +9,12 @@ data class RgbaColor(
 
 	override val javaColor: java.awt.Color
 		get() {
-			return java.awt.Color(red, green, blue, (alpha * 255).toInt().coerceIn(0, 255))
+			val alphaValue = (alpha * 255).toInt().coerceIn(0, 255)
+			return java.awt.Color(red, green, blue, alphaValue)
 		}
 
 	override fun fade(percent: Int): RgbaColor {
-		val newAlpha = (alpha + alpha * (percent / 100.0f)).coerceIn(0f, 1f)
+		val newAlpha = (alpha - alpha * (percent / 100.0f)).coerceIn(0f, 1f)
 		return copy(alpha = newAlpha)
 	}
 
