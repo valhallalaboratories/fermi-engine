@@ -56,16 +56,16 @@ data class Margins(
 			left = Margin(direction = Direction.LEFT, size = Size.ZERO)
 		)
 		val A4 = Margins(
-			top = Margin(direction = Direction.TOP, size = PixelSize(36)),
-			right = Margin(direction = Direction.RIGHT, size = PixelSize(36)),
-			bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36)),
-			left = Margin(direction = Direction.LEFT, size = PixelSize(36))
+			top = Margin(direction = Direction.TOP, size = PixelSize(36f)),
+			right = Margin(direction = Direction.RIGHT, size = PixelSize(36f)),
+			bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36f)),
+			left = Margin(direction = Direction.LEFT, size = PixelSize(36f))
 		)
 		val A4_BORDERED = Margins(
-			top = Margin(direction = Direction.TOP, size = PixelSize(36), border = Border(width = PixelSize(1), BorderType.SOLID, borderColor = Color.GRAY)),
-			right = Margin(direction = Direction.RIGHT, size = PixelSize(36), border = Border(width = PixelSize(1), BorderType.SOLID, borderColor = Color.GRAY)),
-			bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36), border = Border(width = PixelSize(1), BorderType.SOLID, borderColor = Color.GRAY)),
-			left = Margin(direction = Direction.LEFT, size = PixelSize(36), border = Border(width = PixelSize(1), BorderType.SOLID, borderColor = Color.GRAY))
+			top = Margin(direction = Direction.TOP, size = PixelSize(36f), border = Border(width = PixelSize(1f), BorderType.SOLID, borderColor = Color.GRAY)),
+			right = Margin(direction = Direction.RIGHT, size = PixelSize(36f), border = Border(width = PixelSize(1f), BorderType.SOLID, borderColor = Color.GRAY)),
+			bottom = Margin(direction = Direction.BOTTOM, size = PixelSize(36f), border = Border(width = PixelSize(1f), BorderType.SOLID, borderColor = Color.GRAY)),
+			left = Margin(direction = Direction.LEFT, size = PixelSize(36f), border = Border(width = PixelSize(1f), BorderType.SOLID, borderColor = Color.GRAY))
 		)
 	}
 

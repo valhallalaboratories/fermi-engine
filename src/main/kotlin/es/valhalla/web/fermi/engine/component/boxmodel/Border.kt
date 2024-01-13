@@ -19,7 +19,7 @@ data class Border(
 
 data class BorderLine(
 	val line: Line,
-	val size: Int
+	val size: Float
 )
 
 enum class BorderType {

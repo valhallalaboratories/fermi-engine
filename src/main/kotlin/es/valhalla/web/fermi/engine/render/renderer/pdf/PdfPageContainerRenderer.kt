@@ -27,7 +27,7 @@ class PdfPageContainerRenderer : PageContainerRenderer {
 		parentContext: PageContainerRenderContext
 	): ContainerParentRenderContext {
 		val startedAt = System.currentTimeMillis()
-		var pageRenderContext = parentContext as PdfPageRenderContext
+		val pageRenderContext = parentContext as PdfPageRenderContext
 
 		val rootContext = parentContext.rootContext as PdfDocumentRenderContext
 		val pdfPage = parentContext.pdfPage
@@ -37,6 +37,8 @@ class PdfPageContainerRenderer : PageContainerRenderer {
 		renderContainer(container, contentStream, pageRenderContext)
 
 		contentStream.close()
+
+		log.info("PdfSectionPageRenderer.render finished, took: {} milliseconds", startedAt - System.currentTimeMillis())
 
 		return pageRenderContext
 	}
@@ -119,10 +121,10 @@ class PdfPageContainerRenderer : PageContainerRenderer {
 	private fun drawBorderLine(
 		contentStream: PDPageContentStream,
 		border: Border,
-		startX: Int,
-		startY: Int,
-		endX: Int,
-		endY: Int
+		startX: Float,
+		startY: Float,
+		endX: Float,
+		endY: Float
 	) {
 		val color = border.borderColor.fade((Math.random() * 100).toInt()) as RgbaColor
 

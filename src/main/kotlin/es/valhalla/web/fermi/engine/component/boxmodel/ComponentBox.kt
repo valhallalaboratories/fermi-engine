@@ -37,9 +37,9 @@ data class ComponentBox(
 	val pdRectangle: PDRectangle
 		get() = PDRectangle(effectiveWidth.toFloat(), effectiveHeight.toFloat())
 
-	val effectiveWidth: Int
+	val effectiveWidth: Float
 		get() = (width + paddings.horizontalPadding).points
 
-	val effectiveHeight: Int
+	val effectiveHeight: Float
 		get() = (height + paddings.verticalPadding).points
 }

@@ -1,8 +1,8 @@
 package es.valhalla.web.fermi.engine.component.boxmodel
 
 data class Point(
-	val x: Int = 0,
-	val y: Int = 0,
+	val x: Float = 0f,
+	val y: Float = 0f,
 )
 
 
