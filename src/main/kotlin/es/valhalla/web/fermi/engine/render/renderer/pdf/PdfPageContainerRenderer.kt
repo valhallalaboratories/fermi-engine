@@ -6,7 +6,7 @@ import es.valhalla.web.fermi.engine.color.RgbaColor
 import es.valhalla.web.fermi.engine.component.Container
 import es.valhalla.web.fermi.engine.component.boxmodel.Border
 import es.valhalla.web.fermi.engine.component.boxmodel.BorderType
-import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
+import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.boxmodel.Margins
 import es.valhalla.web.fermi.engine.render.context.ContainerParentRenderContext
 import es.valhalla.web.fermi.engine.render.context.PageContainerRenderContext
@@ -75,7 +75,7 @@ class PdfPageContainerRenderer : PageContainerRenderer {
 	}
 
 	private fun strokeBorderLines(
-		box: ComponentBox,
+		box: BoxModel,
 		margins: Margins,
 		contentStream: PDPageContentStream
 	) {

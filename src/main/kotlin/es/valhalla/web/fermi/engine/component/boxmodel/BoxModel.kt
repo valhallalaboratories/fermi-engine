@@ -2,8 +2,8 @@ package es.valhalla.web.fermi.engine.component.boxmodel
 
 import org.apache.pdfbox.pdmodel.common.PDRectangle
 
-data class ComponentBox(
-	val parentBox: ComponentBox? = null,
+data class BoxModel(
+	val parentBox: BoxModel? = null,
 	val width: Size,
 	val height: Size,
 	val margins: Margins = Margins.NO_MARGINS,
@@ -11,14 +11,14 @@ data class ComponentBox(
 ) {
 	companion object {
 		val INLINE_COMPONENT_BOX_MODEL =
-			ComponentBox(
+			BoxModel(
 				width = Size.ZERO,
 				height = Size.ZERO,
 				paddings = Paddings.NO_PADDINGS,
 				margins = Margins.NO_MARGINS
 			)
 		val PAGE_BASE_A4 =
-			ComponentBox(
+			BoxModel(
 				width = MetricSize(mm = 210f),
 				height = MetricSize(mm = 297f),
 				margins = Margins.A4,
@@ -26,7 +26,7 @@ data class ComponentBox(
 			)
 
 		val PAGE_BASE_A4_WITH_BORDERS =
-			ComponentBox(
+			BoxModel(
 				width = MetricSize(mm = 210f),
 				height = MetricSize(mm = 297f),
 				margins = Margins.A4_BORDERED,

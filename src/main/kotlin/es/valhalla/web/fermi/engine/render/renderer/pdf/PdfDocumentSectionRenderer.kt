@@ -27,7 +27,7 @@ class PdfDocumentSectionRenderer : DocumentSectionRenderer {
 			sectionPageNumber = 0,
 			parentContext = parentContext,
 			style = documentSection.sectionStyle ?: Style.BASE_STYLE,
-			componentBox = documentSection.boxModel,
+			boxModel = documentSection.boxModel,
 			renderingMilliseconds = 0
 		)
 

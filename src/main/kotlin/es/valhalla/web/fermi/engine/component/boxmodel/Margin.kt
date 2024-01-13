@@ -8,7 +8,7 @@ data class Margin(
 	val size: Size = Size.ZERO,
 	val border: Border = Border.NO_BORDER,
 ) {
-	fun getBorderLine(box: ComponentBox): BorderLine {
+	fun getBorderLine(box: BoxModel): BorderLine {
 		val line = when (direction) {
 			Direction.TOP ->
 				Line(

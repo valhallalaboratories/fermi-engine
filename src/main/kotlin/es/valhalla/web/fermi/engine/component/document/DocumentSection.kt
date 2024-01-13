@@ -2,7 +2,7 @@ package es.valhalla.web.fermi.engine.component.document
 
 import es.valhalla.web.fermi.engine.component.Component
 import es.valhalla.web.fermi.engine.component.ComponentId
-import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
+import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
 import es.valhalla.web.fermi.engine.style.Style
 import java.util.UUID
@@ -25,6 +25,6 @@ class DocumentSection(
 
 	override val parentComponentId: ComponentId
 		get() = document.componentId
-	override val boxModel: ComponentBox
+	override val boxModel: BoxModel
 		get() = document.boxModel
 }

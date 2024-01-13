@@ -2,7 +2,7 @@ package es.valhalla.web.fermi.engine.component.document
 
 import es.valhalla.web.fermi.engine.component.Component
 import es.valhalla.web.fermi.engine.component.ComponentId
-import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
+import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
 import es.valhalla.web.fermi.engine.component.layout.WrappedComponent
 import es.valhalla.web.fermi.engine.style.Style
@@ -15,7 +15,7 @@ class FermiDocument(
 	val documentId = UUID.randomUUID().toString()
 	override val componentId: ComponentId = UUID.randomUUID().toString()
 	override val parentComponentId: ComponentId? = null
-	override val boxModel: ComponentBox = documentProperties.documentBox
+	override val boxModel: BoxModel = documentProperties.documentBox
 	override val style: Style = documentProperties.documentBaseStyle
 	override val layout: LayoutType = LayoutType.NoLayout
 	override val elements: MutableList<WrappedComponent>

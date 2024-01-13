@@ -22,7 +22,7 @@ class PdfSectionPageRenderer : SectionPageRenderer {
 	): DocumentSectionRenderContext {
 		val startedAt = System.currentTimeMillis()
 		val pageInnerContainer = page.pageContainer
-		val pdfPage = PDPage(parentContext.componentBox.pdRectangle)
+		val pdfPage = PDPage(parentContext.boxModel.pdRectangle)
 		val rootContext = parentContext.rootContext as PdfDocumentRenderContext
 
 		val documentSectionRenderContext: PdfDocumentSectionRenderContext = parentContext as PdfDocumentSectionRenderContext

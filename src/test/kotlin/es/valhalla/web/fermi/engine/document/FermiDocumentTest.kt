@@ -2,7 +2,7 @@ package es.valhalla.web.fermi.engine.document
 
 import es.valhalla.web.fermi.engine.color.Color
 import es.valhalla.web.fermi.engine.component.Container
-import es.valhalla.web.fermi.engine.component.boxmodel.ComponentBox
+import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.document.DocumentProperties
 import es.valhalla.web.fermi.engine.component.document.DocumentSection
 import es.valhalla.web.fermi.engine.component.document.FermiDocument
@@ -16,7 +16,7 @@ internal class FermiDocumentTest {
 	@Test fun `create simple document with just one section`() {
 		val document = FermiDocument(
 			documentProperties = DocumentProperties(
-				documentBox = ComponentBox.PAGE_BASE_A4
+				documentBox = BoxModel.PAGE_BASE_A4
 			)
 		)
 
