@@ -6,12 +6,19 @@ import es.valhalla.web.fermi.engine.component.layout.WrappedComponent
 import es.valhalla.web.fermi.engine.style.Style
 
 interface Component {
+
 	val componentId: ComponentId?
 	val parentComponentId: ComponentId?
 	val boxModel: BoxModel
 	val style: Style
+}
+
+
+interface ComposedElement : Component {
+
 	val layout: LayoutType
 	val elements: MutableList<out WrappedComponent>
 }
+
 
 typealias ComponentId = String

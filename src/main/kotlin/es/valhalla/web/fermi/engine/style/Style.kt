@@ -4,10 +4,10 @@ import es.valhalla.web.fermi.engine.color.Color
 import java.util.UUID
 
 open class Style(
-	val styleId: StyleId? = null,
-	val parentStyleId: StyleId? = null,
-	val backgroundColor: Color = Color.TRANSPARENT,
-	val foregroundColor: Color = Color.BLACK
+	open val styleId: StyleId? = null,
+	open val parentStyleId: StyleId? = null,
+	open val backgroundColor: Color = Color.TRANSPARENT,
+	open val foregroundColor: Color = Color.BLACK
 ) {
 	companion object {
 		val BASE_STYLE =

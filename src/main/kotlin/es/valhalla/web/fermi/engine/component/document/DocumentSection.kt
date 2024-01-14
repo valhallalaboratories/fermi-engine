@@ -1,7 +1,7 @@
 package es.valhalla.web.fermi.engine.component.document
 
-import es.valhalla.web.fermi.engine.component.Component
 import es.valhalla.web.fermi.engine.component.ComponentId
+import es.valhalla.web.fermi.engine.component.ComposedElement
 import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
 import es.valhalla.web.fermi.engine.style.Style
@@ -13,7 +13,7 @@ class DocumentSection(
 	val pages: MutableList<Page>,
 	override val layout: LayoutType,
 	private val document: FermiDocument
-) : Component {
+) : ComposedElement {
 
 	override val elements: MutableList<Page>
 		get() = pages

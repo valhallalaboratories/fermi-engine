@@ -1,11 +1,13 @@
 package es.valhalla.web.fermi.engine.print
 
 import es.valhalla.web.fermi.engine.component.document.FermiDocument
-import es.valhalla.web.fermi.engine.render.context.pdf.PdfDocumentRenderContext
-import es.valhalla.web.fermi.engine.render.renderer.pdf.PdfDocumentRenderer
+import es.valhalla.web.fermi.engine.render.renderer.PdfDocumentRenderContext
+import es.valhalla.web.fermi.engine.render.renderer.PdfDocumentRenderer
+import org.apache.pdfbox.pdmodel.PDDocument
 import java.io.File
 
 interface DocumentPrinter {
+
 	val printOptions: PrintOptions
 
 	fun printDocument(document: FermiDocument): PrintedDocument
@@ -20,8 +22,9 @@ class PdfDocumentPrinter(
 ) : DocumentPrinter {
 
 	override fun printDocument(document: FermiDocument): PrintedDocument {
-		val documentRenderer = PdfDocumentRenderer(document)
-		val renderContext = documentRenderer.render(document) as PdfDocumentRenderContext
+		val documentRenderer = PdfDocumentRenderer()
+
+		val renderContext = documentRenderer.render(document, PdfDocumentRenderContext(pdfDocument = PDDocument(), renderingMilliseconds = 0)) as PdfDocumentRenderContext
 
 		val destinationFile: File = printOptions.destinationFile
 
