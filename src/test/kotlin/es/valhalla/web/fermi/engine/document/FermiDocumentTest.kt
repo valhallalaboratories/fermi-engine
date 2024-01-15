@@ -1,7 +1,6 @@
 package es.valhalla.web.fermi.engine.document
 
 import es.valhalla.web.fermi.engine.color.Color
-import es.valhalla.web.fermi.engine.component.Container
 import es.valhalla.web.fermi.engine.component.boxmodel.BoxModel
 import es.valhalla.web.fermi.engine.component.document.DocumentProperties
 import es.valhalla.web.fermi.engine.component.document.DocumentSection
@@ -10,6 +9,7 @@ import es.valhalla.web.fermi.engine.component.document.Page
 import es.valhalla.web.fermi.engine.component.layout.LayoutType
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import java.util.UUID
 
 internal class FermiDocumentTest {
 
@@ -28,10 +28,10 @@ internal class FermiDocumentTest {
 				layout = LayoutType.NoLayout,
 				pages = mutableListOf(
 					Page(
-						Container(
-							parentComponentId = document.componentId,
-							style = document.style.copy(backgroundColor = Color.BLUE)
-						)
+						componentId = UUID.randomUUID().toString(),
+						boxModel = document.boxModel,
+						parentComponentId = document.componentId,
+						style = document.style.copy(backgroundColor = Color.BLUE)
 					)
 				)
 			)

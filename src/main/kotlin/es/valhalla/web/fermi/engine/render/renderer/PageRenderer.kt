@@ -1,5 +1,6 @@
 package es.valhalla.web.fermi.engine.render.renderer
 
+import es.valhalla.web.fermi.engine.component.Container
 import es.valhalla.web.fermi.engine.component.document.Page
 import org.slf4j.LoggerFactory
 
@@ -20,7 +21,7 @@ class PdfPageRenderer : PageRenderer<PdfPageRenderContext> {
 		renderContext: PdfPageRenderContext
 	): PdfPageRenderContext {
 		val startedAt = System.currentTimeMillis()
-		val pageInnerContainer = component.pageContainer
+		val pageInnerContainer = component as Container
 
 		val milliseconds = System.currentTimeMillis() - startedAt
 
@@ -30,9 +31,9 @@ class PdfPageRenderer : PageRenderer<PdfPageRenderContext> {
 			renderContext = renderContext,
 			pdfPage = renderContext.pdfPage,
 			pdfDocument = renderContext.pdfDocument,
-			parentBoxModel = component.pageContainer.boxModel
+			parentBoxModel = component.boxModel
 		)
-		val pageRenderedContainerContext = containerRenderer.render(pageInnerContainer, containerRenderContext)
+		val pageRenderedContainerContext = containerRenderer.render(component, containerRenderContext)
 
 		log.info("PdfPageRenderer.render finished, took: {} milliseconds", milliseconds)
 

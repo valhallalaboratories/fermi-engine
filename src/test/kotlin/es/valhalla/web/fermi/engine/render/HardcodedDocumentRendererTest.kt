@@ -56,7 +56,13 @@ class HardcodedDocumentRendererTest {
 			layout = LayoutType.RowLayout,
 			style = realFermiDocument.style.copy(backgroundColor = Color.WHITE, foregroundColor = Color.GREEN)
 		)
-		val firstPage = Page(firstPageContainer)
+		val firstPage = documentMainSection.sectionStyle?.let {
+			Page(
+				boxModel = documentMainSection.boxModel,
+				parentComponentId = documentMainSection.parentComponentId,
+				style = it
+			)
+		}
 		firstPageContainer.elements.add(
 			StackedComponent(
 				componentId = UUID.randomUUID().toString(),
@@ -67,18 +73,6 @@ class HardcodedDocumentRendererTest {
 			)
 		)
 
-		firstPageContainer.elements.add(
-			StackedComponent(
-				Container(
-					parentComponentId = firstPageContainer.componentId,
-					style = realFermiDocument.style.copy(backgroundColor = Color.WHITE, foregroundColor = Color.YELLOW),
-					boxModel = firstPageContainer.boxModel.copy(height = PointSize(100f))
-				),
-				expandWidth = true,
-				expandHeight = true
-			)
-		)
-		documentMainSection.pages.add(firstPage)
 
 		val printer = PdfDocumentPrinter(PrintOptions(destinationFile = File("demoFile.pdf")))
 
