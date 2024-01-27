@@ -8,7 +8,6 @@ open class Layout(
 	override val componentType: ComponentType = ComponentType.LAYOUT
 }
 
-interface WrappedComponent : Component
 
 open class StackedLayout(
 	val stackedLayoutType: StackedLayoutType,

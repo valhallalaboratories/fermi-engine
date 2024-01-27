@@ -17,7 +17,7 @@ interface Component {
 				ComponentType.LAYOUT -> TODO()
 				ComponentType.CONTAINER -> TODO()
 			}
-			return Point()
+			return Point(0f, 0f)
 		}
 }
 
@@ -25,6 +25,8 @@ interface ComposedComponent : Component {
 
 	val elements: List<Component>
 }
+
+interface WrappedComponent : Component
 
 data class Document(
 	override val frame: Frame,
