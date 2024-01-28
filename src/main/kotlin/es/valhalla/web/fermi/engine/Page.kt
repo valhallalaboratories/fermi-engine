@@ -2,7 +2,6 @@ package es.valhalla.web.fermi.engine
 
 
 data class Page(
-	override val frame: Frame,
 	val header: LayoutBasedPageHeader,
 	val body: PageBody,
 	val footer: LayoutBasedPageFooter
@@ -13,7 +12,7 @@ data class Page(
 
 interface PageHeader : Component
 
-data class LayoutBasedPageHeader(override val frame: Frame) : PageHeader {
+class LayoutBasedPageHeader : PageHeader {
 
 	override val componentType: ComponentType = ComponentType.PAGE_HEADER
 }
@@ -21,7 +20,6 @@ data class LayoutBasedPageHeader(override val frame: Frame) : PageHeader {
 interface PageBody : Component
 
 data class LayoutBasedPageBody(
-	override val frame: Frame,
 	val stackedLayout: StackedLayout
 ) : PageBody {
 
@@ -30,7 +28,7 @@ data class LayoutBasedPageBody(
 
 interface PageFooter : Component
 
-data class LayoutBasedPageFooter(override val frame: Frame) : PageFooter {
+class LayoutBasedPageFooter : PageFooter {
 
 	override val componentType: ComponentType = ComponentType.PAGE_FOOTER
 }

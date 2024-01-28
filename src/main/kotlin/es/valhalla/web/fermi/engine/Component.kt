@@ -3,7 +3,6 @@ package es.valhalla.web.fermi.engine
 
 interface Component {
 
-	val frame: Frame
 	val componentType: ComponentType
 	val absolutePosition: Point
 		get() {
@@ -29,7 +28,6 @@ interface ComposedComponent : Component {
 interface WrappedComponent : Component
 
 data class Document(
-	override val frame: Frame,
 	val sections: List<DocumentSection>,
 ) : ComposedComponent {
 
@@ -39,7 +37,6 @@ data class Document(
 
 
 data class DocumentSection(
-	override val frame: Frame,
 	val pages: MutableList<Page> = mutableListOf(),
 ) : ComposedComponent {
 
