@@ -10,11 +10,4 @@ interface ComponentRenderer<T : Component> {
 }
 
 
-interface DocumentRenderer : ComponentRenderer<Document> {
-
-	override fun render(
-		component: Document,
-		parentContext: RenderContext
-	): RenderContext
-}
 

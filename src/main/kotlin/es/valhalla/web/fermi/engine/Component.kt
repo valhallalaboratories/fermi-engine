@@ -29,32 +29,17 @@ interface WrappedComponent : Component
 
 data class Document(
 	val sections: List<DocumentSection>,
-) : ComposedComponent {
-
-	override val componentType: ComponentType = ComponentType.DOCUMENT
-	override val elements: List<DocumentSection> = sections
-}
+)
 
 
 data class DocumentSection(
 	val pages: MutableList<Page> = mutableListOf(),
-) : ComposedComponent {
-
-	override val componentType: ComponentType = ComponentType.DOCUMENT
-
-	override val elements: MutableList<Page> = pages
-}
-
-
-enum class RenderOutputFormat { PDF, HTML
-}
+)
 
 
 object RendererRegistry {
 
 	private val renderers = mapOf(
-		Document::class.java to PdfDocumentRenderer(),
-		DocumentSection::class.java to PdfDocumentSectionRenderer(),
 		Page::class.java to PdfPageRenderer(),
 		Container::class.java to PdfContainerRenderer(),
 	)
