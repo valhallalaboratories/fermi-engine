@@ -7,7 +7,6 @@ interface Component {
 	val absolutePosition: Point
 		get() {
 			when (componentType) {
-				ComponentType.DOCUMENT -> TODO()
 				ComponentType.DOCUMENT_SECTION -> TODO()
 				ComponentType.PAGE -> TODO()
 				ComponentType.PAGE_HEADER -> TODO()
